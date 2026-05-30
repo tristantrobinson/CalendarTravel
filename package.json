@@ -1,0 +1,17 @@
+{
+  "name": "calendar-travel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Google Calendar + Maps drive-time travel blocks",
+  "scripts": {
+    "auth": "node scripts/google-auth.js",
+    "sync": "node scripts/sync-drive-times.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

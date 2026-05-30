@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  launchd job: run the drive-time sync every morning at 06:00.
+
+  Install:
+    cp scheduling/com.calendatravel.drivetimes.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
+
+  Run once now / check / remove:
+    launchctl start com.calendatravel.drivetimes
+    launchctl list | grep calendatravel
+    launchctl unload ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
+
+  Logs go to drive-sync.log in the CalendarTravel folder (gitignored).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.calendatravel.drivetimes</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh</string>
+  </array>
+
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>6</integer>
+    <key>Minute</key>
+    <integer>0</integer>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/tristan/Documents/CalendarTravel/drive-sync.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/tristan/Documents/CalendarTravel/drive-sync.log</string>
+</dict>
+</plist>
