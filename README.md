@@ -1,6 +1,8 @@
 # CalendarTravel
 
-Standalone project at `/Users/tristan/Documents/CalendarTravel` (sibling to `ClaudeCodeTest`, not nested inside it).
+Standalone project: [github.com/tristantrobinson/CalendarTravel](https://github.com/tristantrobinson/CalendarTravel)
+
+Local path: `/Users/tristan/Documents/CalendarTravel` (sibling to `ClaudeCodeTest`, not nested inside it).
 
 Google Calendar + Google Maps integration that writes traffic-aware **"Drive to …"** travel blocks into a separate calendar. Each block ends when the event starts and is sized to the current drive time, so you know when to leave.
 
