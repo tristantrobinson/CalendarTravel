@@ -23,6 +23,7 @@ async function computeOnce({ origin, destination, departureTime, apiKey }) {
       travelMode: "DRIVE",
       routingPreference: "TRAFFIC_AWARE",
       departureTime: departureTime.toISOString(),
+      routeModifiers: { avoidTolls: true },
     }),
   });
 

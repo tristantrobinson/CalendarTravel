@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  launchd job: run the drive-time sync every morning at 06:00.
+  launchd job: run the drive-time sync every 15 minutes.
 
   Install:
     cp scheduling/com.calendatravel.drivetimes.plist ~/Library/LaunchAgents/
@@ -10,6 +10,9 @@
     launchctl start com.calendatravel.drivetimes
     launchctl list | grep calendatravel
     launchctl unload ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
+
+  To change frequency, edit StartInterval below (seconds). Examples:
+    900 = 15 min, 1800 = 30 min, 3600 = 1 hour
 
   Logs go to drive-sync.log in the CalendarTravel folder (gitignored).
 -->
@@ -24,13 +27,11 @@
     <string>/Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh</string>
   </array>
 
-  <key>StartCalendarInterval</key>
-  <dict>
-    <key>Hour</key>
-    <integer>6</integer>
-    <key>Minute</key>
-    <integer>0</integer>
-  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StartInterval</key>
+  <integer>900</integer>
 
   <key>StandardOutPath</key>
   <string>/Users/tristan/Documents/CalendarTravel/drive-sync.log</string>

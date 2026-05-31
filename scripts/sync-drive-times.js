@@ -52,7 +52,7 @@ async function main() {
   const events = await listSourceEvents(cal, sourceCalendarId, now, windowEnd);
   // Timed events with a location, sorted by start (listSourceEvents already sorts).
   const located = events
-    .filter((e) => e.start && e.start.dateTime && e.location && e.location.trim())
+    .filter((e) => e.status !== "cancelled" && e.start && e.start.dateTime && e.location && e.location.trim())
     .map((e) => ({
       id: e.id,
       summary: e.summary || e.location,
@@ -116,8 +116,11 @@ async function main() {
   }
 
   // Reconcile: remove managed blocks whose source event no longer qualifies.
+  // Look back as well as forward — blocks for events that already started/end are
+  // omitted by timeMin=now, so stale drive blocks would otherwise never be cleaned up.
   let deleted = 0;
-  const managed = await listManagedBlocks(cal, travelCalendarId, now, windowEnd);
+  const reconcileMin = new Date(now.getTime() - lookaheadDays * 24 * 60 * 60 * 1000);
+  const managed = await listManagedBlocks(cal, travelCalendarId, reconcileMin, windowEnd);
   for (const block of managed) {
     const sourceId = block.extendedProperties && block.extendedProperties.private && block.extendedProperties.private.sourceId;
     if (!sourceId || !touchedSourceIds.has(sourceId)) {

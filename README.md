@@ -41,12 +41,20 @@ launchctl load ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
 launchctl start com.calendatravel.drivetimes   # run once now to test
 ```
 
-Runs daily at 06:00; logs to `drive-sync.log`. The plist calls `scripts/run-sync.sh`, which pins the Node path (edit it if your Node moves).
-
-Prefer cron?
+Runs every **15 minutes** (and once at login); logs to `drive-sync.log`. To change frequency, edit `StartInterval` in the plist (seconds — e.g. `900` = 15 min, `1800` = 30 min, `3600` = 1 hour) and reload:
 
 ```bash
-0 6 * * * /Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh
+launchctl unload ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
+cp scheduling/com.calendatravel.drivetimes.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.calendatravel.drivetimes.plist
+```
+
+The plist calls `scripts/run-sync.sh`, which pins the Node path (edit it if your Node moves).
+
+Prefer cron? Every 15 minutes:
+
+```bash
+*/15 * * * * /Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh
 ```
 
 ## Configuration (`.env`)
