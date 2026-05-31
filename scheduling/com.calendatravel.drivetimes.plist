@@ -24,7 +24,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh</string>
+    <string>/Users/tristan/Projects/CalendarTravel/scripts/run-sync.sh</string>
   </array>
 
   <key>RunAtLoad</key>
@@ -34,8 +34,8 @@
   <integer>900</integer>
 
   <key>StandardOutPath</key>
-  <string>/Users/tristan/Documents/CalendarTravel/drive-sync.log</string>
+  <string>/Users/tristan/Projects/CalendarTravel/drive-sync.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/tristan/Documents/CalendarTravel/drive-sync.log</string>
+  <string>/Users/tristan/Projects/CalendarTravel/drive-sync.log</string>
 </dict>
 </plist>

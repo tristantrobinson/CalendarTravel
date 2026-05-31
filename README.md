@@ -2,7 +2,7 @@
 
 Standalone project: [github.com/tristantrobinson/CalendarTravel](https://github.com/tristantrobinson/CalendarTravel)
 
-Local path: `/Users/tristan/Documents/CalendarTravel` (sibling to `ClaudeCodeTest`, not nested inside it).
+Local path: `/Users/tristan/Projects/CalendarTravel` (outside `Documents/` so macOS launchd can run scheduled syncs).
 
 Google Calendar + Google Maps integration that writes traffic-aware **"Drive to …"** travel blocks into a separate calendar. Each block ends when the event starts and is sized to the current drive time, so you know when to leave.
 
@@ -18,7 +18,7 @@ The origin is smart: it chains from the previous event's location when events ar
 6. **Install + authorize**:
 
    ```bash
-   cd /Users/tristan/Documents/CalendarTravel
+   cd /Users/tristan/Projects/CalendarTravel
    npm install
    npm run auth     # browser consent flow → credentials/token.json
    ```
@@ -54,7 +54,7 @@ The plist calls `scripts/run-sync.sh`, which pins the Node path (edit it if your
 Prefer cron? Every 15 minutes:
 
 ```bash
-*/15 * * * * /Users/tristan/Documents/CalendarTravel/scripts/run-sync.sh
+*/15 * * * * /Users/tristan/Projects/CalendarTravel/scripts/run-sync.sh
 ```
 
 ## Configuration (`.env`)
